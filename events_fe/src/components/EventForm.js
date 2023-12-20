@@ -4,6 +4,8 @@ import classes from './EventForm.module.css';
 import {Fragment, useState} from "react";
 import axios from "axios";
 import EventsRootLayout from "../pages/EventsRoot";
+import {getAuthToken} from "../util/util";
+import jwt_decode from 'jwt-decode';
 
 function EventForm({method, event}) {
     const navigate = useNavigate();
@@ -46,13 +48,25 @@ function EventForm({method, event}) {
 
     async function handleFormSubmit(e) {
         e.preventDefault()
+        const authToken=getAuthToken()
+        // const decodedToken = jwt_decode(authToken);
+        // console.log('Decoded token:', decodedToken);
+        //
+        //
+        // const userId = decodedToken.userId; // Replace 'userId' with the actual field in your token payload
+        // console.log('User IDddddddddddddddddd:', userId);
         const obj={
             title,
             description,
             image_base64:base64Image
         }
         try {
-            const response = await axios.post('http://127.0.0.1:8000/addPhoto/', obj);
+            const response = await axios.post('http://127.0.0.1:8000/addPhoto/', obj,{
+                headers:{
+                    'Authorization': `Token ${authToken}`,
+                    // 'Content-Type': 'application/json', // Content-Type header
+                }
+            });
 
             console.log('Response from server:---------------------', obj,"---------------------");
             setIsSubmitted(true)

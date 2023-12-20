@@ -11,6 +11,7 @@ import ImageFromLocal from "./pages/ImageFromLocal";
 import PhotoList from "./pages/ImageUploadForm";
 import YourComponent from "./pages/ImageFromLocal";
 import ErrorPage from "./pages/Error";
+import AuthenticationPage, {authAction} from "./pages/AuthenticationPage";
 
 const router = createBrowserRouter([
     {
@@ -25,13 +26,18 @@ const router = createBrowserRouter([
                 children: [
                     {path: '', element: <EventsPage/>, loader: loaderrr},
                     {
-                        path: ":eventId",id:"event-detail", loader: loaderForEventDetail, children: [
-                            {path: '', element: <EventDetailPage/> },
+                        path: ":eventId", id: "event-detail", loader: loaderForEventDetail, children: [
+                            {path: '', element: <EventDetailPage/>},
                             {path: 'edit', element: <EditEventPage/>},
                         ]
                     },
-                    {path: 'new', element: <NewEventPage/> },
+                    {path: 'new', element: <NewEventPage/>},
                 ]
+            },
+            {
+                path: "auth",
+                element: <AuthenticationPage/>,
+                action: authAction
             }
         ]
     }

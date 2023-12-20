@@ -17,6 +17,15 @@ function MainNavigation() {
                             isActive ? classes.active : undefined}
                         >Photos</Link>
                     </li>
+                    <li>
+                        <Link to={"auth"} className={({isActive}) =>
+                            isActive ? classes.active : undefined}
+                        >LogIn
+                        </Link>
+                    </li>
+                    <li>
+                        <button>Logout</button>
+                    </li>
                 </ul>
             </nav>
         </header>

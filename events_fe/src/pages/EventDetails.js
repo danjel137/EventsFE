@@ -1,6 +1,7 @@
 import {useLoaderData, useParams, useRouteLoaderData} from "react-router-dom";
 import axios from "axios";
 import EventItem from "../components/EventItem";
+import {getAuthToken} from "../util/util";
 
 function EventDetailPage() {
     const data=useRouteLoaderData("event-detail")
@@ -19,9 +20,18 @@ export default EventDetailPage;
 
 export async function loaderForEventDetail({ request, params }) {
     const id = params.eventId;
-
+    console.log("iddddddddddd",id)
+    const authToken=getAuthToken()
+    console.log("toooooooooooooken",authToken)
     try {
-        const response = await axios.get('http://127.0.0.1:8000/getPhotoById/'+id);
+        const response = await axios.get('http://127.0.0.1:8000/getPhotoById/'+id
+            ,{
+                headers:{
+                    'Authorization': `Token ${authToken}`,
+                    // 'Content-Type': 'application/json', // Content-Type header
+                }
+            }
+        );
         console.log("danjel halii"+response.data)
         return response.data;
 
