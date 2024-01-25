@@ -9,6 +9,7 @@ function AuthenticationPage() {
     )
 }
 
+
 export default AuthenticationPage
 
 export async function authAction({request}) {
