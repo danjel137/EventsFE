@@ -44,7 +44,6 @@ const router = createBrowserRouter([
 ])
 
 function App() {
-    //Danjel A
     return <RouterProvider router={router}/>;
     // return <YourComponent/>
     // return <PhotoList/>
