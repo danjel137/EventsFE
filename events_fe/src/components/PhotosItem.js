@@ -1,13 +1,13 @@
-import classes from './EventItem.module.css';
+import classes from './PhotosItem.module.css';
 import {Link, redirect, useParams, useSubmit} from "react-router-dom";
 import axios from "axios";
 import {useState} from "react";
 import {getAuthToken} from "../util/util";
 
-function EventItem({event}) {
+function PhotosItem({photos}) {
     // const submit = useSubmit();
     const params = useParams();
-    const eventId = params.eventId;
+    const photosId = params.photosId;
     const [isDeletedSuccessfully, setIsDeletedSuccessfully] = useState(false)
 
 
@@ -17,18 +17,18 @@ function EventItem({event}) {
         if (proceed) {
             // submit(null, { method: 'delete' });
             try {
-                console.log("--------", eventId)
-                const response = await axios.delete(" http://127.0.0.1:8000/deletePhoto/" + eventId, {
+                console.log("--------", photosId)
+                const response = await axios.delete(" http://127.0.0.1:8000/deletePhoto/" + photosId, {
                     method: "DELETE",
                     headers: {
                         'Authorization': `Token ${authToken}`,
                         // 'Content-Type': 'application/json', // Content-Type header
                     }
                 });
-                console.log("--------", eventId)
+                console.log("--------", photosId)
                 setIsDeletedSuccessfully(true)
                 if (response.status !== 200) {
-                    throw new Error('Could not delete event.');
+                    throw new Error('Could not delete photos.');
                 }
 
             } catch (error) {
@@ -38,12 +38,12 @@ function EventItem({event}) {
     }
 
     return (
-        <article className={classes.event}>
-            <img src={event.image_base64} alt={event.title}/>
+        <article className={classes.photos}>
+            <img src={photos.image_base64} alt={photos.title}/>
             {!isDeletedSuccessfully &&
                 <>
-                    <h1>{event.title}</h1>
-                    <p>{event.description}</p>
+                    <h1>{photos.title}</h1>
+                    <p>{photos.description}</p>
                     <menu className={classes.actions}>
                         <Link to={"edit"}>Edit</Link>
                         <button onClick={startDeleteHandler}>Delete</button>
@@ -61,4 +61,4 @@ function EventItem({event}) {
     );
 }
 
-export default EventItem;
+export default PhotosItem;

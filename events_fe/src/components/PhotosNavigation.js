@@ -1,7 +1,7 @@
-import classes from './EventsNavigation.module.css';
+import classes from './PhotosNavigation.module.css';
 import {NavLink} from "react-router-dom";
 
-function EventsNavigation() {
+function PhotosNavigation() {
   return (
       <header className={classes.header}>
         <nav>
@@ -33,4 +33,4 @@ function EventsNavigation() {
   );
 }
 
-export default EventsNavigation;
+export default PhotosNavigation;

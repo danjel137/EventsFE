@@ -1,13 +1,13 @@
 import {Form, Link, redirect, useNavigate, useNavigation} from 'react-router-dom';
 
-import classes from './EventForm.module.css';
+import classes from './PhotosForm.module.css';
 import {Fragment, useState} from "react";
 import axios from "axios";
-import EventsRootLayout from "../pages/EventsRoot";
+import PhotosRootLayout from "../pages/PhotosRoot";
 import {getAuthToken} from "../util/util";
 import jwt_decode from 'jwt-decode';
 
-function EventForm({method, event}) {
+function PhotosForm({method, photos}) {
     const navigate = useNavigate();
     const navigation = useNavigation();
     const [base64Image, setBase64Image] = useState('');
@@ -132,4 +132,4 @@ function EventForm({method, event}) {
     );
 }
 
-export default EventForm;
+export default PhotosForm;

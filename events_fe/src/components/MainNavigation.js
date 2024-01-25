@@ -13,7 +13,7 @@ function MainNavigation() {
                         >Home</NavLink>
                     </li>
                     <li>
-                        <Link to={"events"} className={({isActive}) =>
+                        <Link to={"photos"} className={({isActive}) =>
                             isActive ? classes.active : undefined}
                         >Photos</Link>
                     </li>

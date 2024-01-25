@@ -1,20 +1,20 @@
 import {useEffect, useState} from 'react';
 
-import EventsList from '../components/EventsList';
+import PhotosList from '../components/PhotosList';
 import axios from "axios";
 import {useLoaderData} from "react-router-dom";
 import {getAuthToken} from "../util/util";
 import PhotoList from "./ImageUploadForm";
 
-function EventsPage() {
-    const events = useLoaderData()
+function PhotosPage() {
+    const photos = useLoaderData()
 
     return (
-        <EventsList events={events}/>
+        <PhotosList photos={photos}/>
     );
 }
 
-export default EventsPage;
+export default PhotosPage;
 
 export async function loaderrr() {
     try {

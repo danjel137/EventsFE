@@ -1,25 +1,25 @@
 import {useLoaderData, useParams, useRouteLoaderData} from "react-router-dom";
 import axios from "axios";
-import EventItem from "../components/EventItem";
+import PhotosItem from "../components/PhotosItem";
 import {getAuthToken} from "../util/util";
 
-function EventDetailPage() {
-    const data=useRouteLoaderData("event-detail")
+function PhotosDetailPage() {
+    const data=useRouteLoaderData("photos-detail")
      const params = useParams();
 
     return (
         <>
             {/*<h1>EventDetailPage</h1>*/}
             {/*<p>Event ID: {params.eventId}</p>*/}
-            <EventItem  event={data}/>
+            <PhotosItem photos={data}/>
         </>
     );
 }
 
-export default EventDetailPage;
+export default PhotosDetailPage;
 
-export async function loaderForEventDetail({ request, params }) {
-    const id = params.eventId;
+export async function loaderForPhotosDetail({ request, params }) {
+    const id = params.photosId;
     console.log("iddddddddddd",id)
     const authToken=getAuthToken()
     console.log("toooooooooooooken",authToken)
@@ -43,19 +43,19 @@ export async function loaderForEventDetail({ request, params }) {
 }
 
 
-export async function deleteEventAction({ params, request }) {
-    const eventId = params.eventId;
-    try {console.log("--------",eventId)
-        const response = await axios.delete(" http://127.0.0.1:8000/deletePhoto/"+eventId,{
+export async function deletePhotosAction({ params, request }) {
+    const photosId = params.photosId;
+    try {console.log("--------",photosId)
+        const response = await axios.delete(" http://127.0.0.1:8000/deletePhoto/"+photosId,{
             method: "DELETE",
         });
-        console.log("--------",eventId)
+        console.log("--------",photosId)
         if (response.status !== 200) {
-            throw new Error('Could not delete event.');
+            throw new Error('Could not delete photo.');
         }
 
         // If the deletion is successful, you can perform the redirect here or handle it as needed
-        return '/events'; // Return the path to redirect to '/events' after successful deletion
+        return '/photos'; // Return the path to redirect to '/photos' after successful deletion
     } catch (error) {
         // Handle errors or throw them to be caught by the caller
         throw error;

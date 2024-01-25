@@ -1,11 +1,11 @@
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import HomePage from "./pages/Home";
-import EventsPage, {loaderrr} from "./pages/Events";
-import EventDetailPage, {deleteEventAction, loaderForEventDetail} from "./pages/EventDetails";
-import NewEventPage, {newPhotoAction} from "./pages/NewEvent";
-import EditEventPage from "./pages/EditEvent";
+import PhotosPage, {loaderrr} from "./pages/Photos";
+import PhotosDetailPage, {deletePhotosAction, loaderForPhotosDetail} from "./pages/PhotosDetails";
+import NewPhotosPage, {newPhotoAction} from "./pages/NewPhotos";
+import EditPhotosPage from "./pages/EditPhotos";
 import RootLayout from "./pagesProv/Root";
-import EventsRootLayout from "./pages/EventsRoot";
+import PhotosRootLayout from "./pages/PhotosRoot";
 import ImageUploadForm from "./pages/ImageUploadForm";
 import ImageFromLocal from "./pages/ImageFromLocal";
 import PhotoList from "./pages/ImageUploadForm";
@@ -21,17 +21,17 @@ const router = createBrowserRouter([
         children: [
             {index: true, element: <HomePage/>},
             {
-                path: "events",
-                element: <EventsRootLayout/>,
+                path: "photos",
+                element: <PhotosRootLayout/>,
                 children: [
-                    {path: '', element: <EventsPage/>, loader: loaderrr},
+                    {path: '', element: <PhotosPage/>, loader: loaderrr},
                     {
-                        path: ":eventId", id: "event-detail", loader: loaderForEventDetail, children: [
-                            {path: '', element: <EventDetailPage/>},
-                            {path: 'edit', element: <EditEventPage/>},
+                        path: ":photosId", id: "photos-detail", loader: loaderForPhotosDetail, children: [
+                            {path: '', element: <PhotosDetailPage/>},
+                            {path: 'edit', element: <EditPhotosPage/>},
                         ]
                     },
-                    {path: 'new', element: <NewEventPage/>},
+                    {path: 'new', element: <NewPhotosPage/>},
                 ]
             },
             {

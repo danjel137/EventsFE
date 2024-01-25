@@ -1,20 +1,20 @@
-import classes from './EventsList.module.css';
+import classes from './PhotosList.module.css';
 import {Link} from "react-router-dom";
 
-function EventList({ events }) {
+function PhotosList({ photos }) {
     return (
-        <div className={classes.events}>
+        <div className={classes.photos}>
             <h1>All Photos</h1>
             <ul className={classes.list}>
-                {Array.isArray(events) && events.length > 0 ? (
+                {Array.isArray(photos) && photos.length > 0 ? (
                     // If events is an array and has data, render the list
-                    events.map((event) => (
-                        <li key={event.id} className={classes.item}>
-                            <Link to={`${event.id}`}>
-                                <img src={event.image_base64} alt={event.title} />
+                    photos.map((photos) => (
+                        <li key={photos.id} className={classes.item}>
+                            <Link to={`${photos.id}`}>
+                                <img src={photos.image_base64} alt={photos.title} />
                                 <div className={classes.content}>
-                                    <h2>{event.title}</h2>
-                                    <p>{event.description}</p>
+                                    <h2>{photos.title}</h2>
+                                    <p>{photos.description}</p>
                                 </div>
                             </Link>
                         </li>
@@ -28,4 +28,4 @@ function EventList({ events }) {
     );
 }
 
-export default EventList;
+export default PhotosList;

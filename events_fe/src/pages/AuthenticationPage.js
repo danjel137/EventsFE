@@ -33,10 +33,10 @@ export async function authAction({request}) {
         console.log(token)
 
         if (mode === "login") {
-            window.location.href = 'http://localhost:3000/events';
+            window.location.href = 'http://localhost:3000/photos';
         } else if(mode === "singUp"){
 
-             window.location.href = 'http://localhost:3000/events';
+             window.location.href = 'http://localhost:3000/photos';
         }
         // return response.data;
     } catch (error) {
