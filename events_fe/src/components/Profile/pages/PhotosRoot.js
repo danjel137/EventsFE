@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 
-import PhotosNavigation from '../components/PhotosNavigation';
+import PhotosNavigation from '../PhotosNavigation';
 
 function PhotosRootLayout() {
     return (

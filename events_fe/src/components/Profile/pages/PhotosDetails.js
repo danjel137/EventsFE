@@ -1,7 +1,7 @@
 import {useLoaderData, useParams, useRouteLoaderData} from "react-router-dom";
 import axios from "axios";
-import PhotosItem from "../components/PhotosItem";
-import {getAuthToken} from "../util/util";
+import PhotosItem from "../PhotosItem";
+import {getAuthToken} from "../../../util/util";
 
 function PhotosDetailPage() {
     const data=useRouteLoaderData("photos-detail")

@@ -1,31 +1,56 @@
 import classes from './MainNavigation.module.css';
-import {Link, NavLink} from "react-router-dom";
+import {Form, Link, NavLink, redirect} from "react-router-dom";
+import {getAuthToken} from "../util/util";
+import {actionLogout} from "../util/logout";
+import SearchPage from "./search/SearchBar";
+import LogoHome from "./Home/LogoHome";
+import SearchBar from "./search/SearchBar";
+import NotificationPage from "./notification/NotificationPage";
+import NotificationBar from "./notification/LogoNotification";
 
 function MainNavigation() {
+    const isLogin=getAuthToken()
+
     return (
         <header className={classes.header}>
             <nav>
                 <ul className={classes.list}>
-                    <li>
-                        <NavLink to={""} className={({isActive}) =>
+                    {isLogin &&<li>
+                        <NavLink to={"home"} className={({isActive}) =>
                             isActive ? classes.active : undefined}
                                  end
-                        >Home</NavLink>
-                    </li>
-                    <li>
+                        ><LogoHome/></NavLink>
+                    </li>}
+                    {isLogin &&<li>
+                        <NavLink to={"search"} className={({isActive}) =>
+                            isActive ? classes.active : undefined}
+                                 end
+                        ><SearchBar/></NavLink>
+
+                    </li>}
+                    {isLogin &&<li>
+                        <NavLink to={"notification"} className={({isActive}) =>
+                            isActive ? classes.active : undefined}
+                                 end
+                        ><NotificationBar/></NavLink>
+                    </li>}
+                    {isLogin && <li>
                         <Link to={"photos"} className={({isActive}) =>
                             isActive ? classes.active : undefined}
-                        >Photos</Link>
-                    </li>
-                    <li>
+                        >Profile</Link>
+                    </li>}
+                    {!isLogin && <li>
                         <Link to={"auth"} className={({isActive}) =>
                             isActive ? classes.active : undefined}
                         >LogIn
                         </Link>
-                    </li>
-                    <li>
-                        <button>Logout</button>
-                    </li>
+                    </li>}
+                    {isLogin &&
+                        <li>
+                        <Form action="/events_fe/src/util/logout" method="post">
+                            <button>Logout</button>
+                        </Form>
+                    </li>}
                 </ul>
             </nav>
         </header>

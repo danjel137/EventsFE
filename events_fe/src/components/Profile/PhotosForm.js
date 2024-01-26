@@ -3,8 +3,8 @@ import {Form, Link, redirect, useNavigate, useNavigation} from 'react-router-dom
 import classes from './PhotosForm.module.css';
 import {Fragment, useState} from "react";
 import axios from "axios";
-import PhotosRootLayout from "../pages/PhotosRoot";
-import {getAuthToken} from "../util/util";
+import PhotosRootLayout from "./pages/PhotosRoot";
+import {getAuthToken} from "../../util/util";
 import jwt_decode from 'jwt-decode';
 
 function PhotosForm({method, photos}) {

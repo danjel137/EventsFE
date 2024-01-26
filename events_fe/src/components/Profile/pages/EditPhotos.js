@@ -1,4 +1,4 @@
-import PhotosForm from "../components/PhotosForm";
+import PhotosForm from "../PhotosForm";
 import {useLoaderData, useRouteLoaderData} from "react-router-dom";
 
 function EditPhotosPage() {

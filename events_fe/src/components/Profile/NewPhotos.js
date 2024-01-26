@@ -1,4 +1,4 @@
-import PhotosForm from "../components/PhotosForm";
+import PhotosForm from "./PhotosForm";
 import {redirect} from "react-router-dom";
 import axios from "axios";
 

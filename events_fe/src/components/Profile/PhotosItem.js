@@ -2,7 +2,7 @@ import classes from './PhotosItem.module.css';
 import {Link, redirect, useParams, useSubmit} from "react-router-dom";
 import axios from "axios";
 import {useState} from "react";
-import {getAuthToken} from "../util/util";
+import {getAuthToken} from "../../util/util";
 
 function PhotosItem({photos}) {
     // const submit = useSubmit();

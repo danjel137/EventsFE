@@ -1,4 +1,4 @@
-import MainNavigation from "../components/MainNavigation";
+import MainNavigation from "../../MainNavigation";
 import {Outlet} from "react-router-dom";
 
 function RootLayout(){
@@ -11,3 +11,4 @@ function RootLayout(){
         </>
     )
 }
+export default RootLayout

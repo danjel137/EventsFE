@@ -1,9 +1,9 @@
 import {useEffect, useState} from 'react';
 
-import PhotosList from '../components/PhotosList';
+import PhotosList from '../PhotosList';
 import axios from "axios";
 import {useLoaderData} from "react-router-dom";
-import {getAuthToken} from "../util/util";
+import {getAuthToken} from "../../../util/util";
 import PhotoList from "./ImageUploadForm";
 
 function PhotosPage() {
