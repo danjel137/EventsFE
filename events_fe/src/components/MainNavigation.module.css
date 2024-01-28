@@ -4,11 +4,17 @@
   padding: 2rem;
   display: flex;
   justify-content: space-between;
+  background-color: #223649;
+
 }
 
 .list {
+  position: absolute;
+  left: 1px;
   display: flex;
   gap: 1rem;
+
+
 }
 
 .list a {
@@ -20,3 +26,12 @@
 .list a.active {
   color: var(--color-primary-800);
 }
+
+.profile{
+  position: absolute;
+  left: 1000px;
+  padding-top: 3px;
+  color: var(--color-primary-800);
+
+}
+

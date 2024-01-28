@@ -1,0 +1,31 @@
+.sliding-select {
+    position: relative;
+}
+
+.display {
+    cursor: pointer;
+}
+
+.select-options {
+    top: 0;
+    left: -100%; /* Initially off-screen to the left */
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    height: 100%; /* Cover the full height of the options */
+ }
+.select-options.visible {
+
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+
+
+.display{
+    display: flex;
+}

@@ -1,5 +1,5 @@
 import classes from './PhotosItem.module.css';
-import {Link, redirect, useParams, useSubmit} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import axios from "axios";
 import {useState} from "react";
 import {getAuthToken} from "../../util/util";

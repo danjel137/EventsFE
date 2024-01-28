@@ -7,7 +7,7 @@ import Home from "./Home";
 const LogoHome = () => {
     return (
         <div className="logo">
-            <FontAwesomeIcon icon={faHome} size="2x" />Home
+            <FontAwesomeIcon icon={faHome} size="2x" /> Home
         </div>
     );
 };

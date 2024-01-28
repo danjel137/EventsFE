@@ -17,6 +17,8 @@ import MainNavigation from "./components/MainNavigation";
 import AuthForm from "./components/AuthForm";
 import NotificationPage from "./components/notification/NotificationPage";
 import SearchPage from "./components/search/SearchPage";
+import SelectProfile from "./components/Profile/SelectProfile";
+import ExplorePage from "./components/explore/ExplorePage";
 
 
 const router = createBrowserRouter([
@@ -28,6 +30,8 @@ const router = createBrowserRouter([
             {path: "home", element: <HomePage/>},
             {path: "search", element: <SearchPage/>},
             {path: "notification", element: <NotificationPage/>},
+            {path: "explore", element: <ExplorePage/>},
+            // {path: "profile", element: <SelectProfile/>},
             {
                 path: "photos",
                 element: <PhotosRootLayout/>,

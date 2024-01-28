@@ -5,7 +5,7 @@ import {faBell} from '@fortawesome/free-solid-svg-icons';
 const NotificationBar = () => {
     return (
         <div className="logo">
-            <FontAwesomeIcon icon={faBell} size="2x" />Notification
+            <FontAwesomeIcon icon={faBell} size="2x" /> Notification
         </div>
     );
 };
