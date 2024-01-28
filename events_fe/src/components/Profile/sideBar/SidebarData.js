@@ -1,43 +1,44 @@
 import React from 'react';
 import * as FaIcons from 'react-icons/fa';
-import * as AiIcons from 'react-icons/ai';
 import * as IoIcons from 'react-icons/io';
+import * as CgIcons from "react-icons/cg";
+import * as MdIcons from "react-icons/md";
 
 export const SidebarData = [
   {
-    title: 'Home',
-    path: '/',
-    icon: <AiIcons.AiFillHome />,
+    title: 'Profile',
+    path: '/photos',
+    icon: <CgIcons.CgProfile />,
     cName: 'nav-text'
   },
   {
-    title: 'Reports',
-    path: '/reports',
-    icon: <IoIcons.IoIosPaper />,
+    title: 'Friends',
+    path: '/friends',
+    icon: <FaIcons.FaUserFriends />,
     cName: 'nav-text'
   },
   {
-    title: 'Products',
-    path: '/products',
-    icon: <FaIcons.FaCartPlus />,
+    title: 'Groups',
+    path: '/groups',
+    icon: <MdIcons.MdGroups />,
     cName: 'nav-text'
   },
   {
-    title: 'Team',
-    path: '/team',
-    icon: <IoIcons.IoMdPeople />,
-    cName: 'nav-text'
-  },
-  {
-    title: 'Messages',
-    path: '/messages',
-    icon: <FaIcons.FaEnvelopeOpenText />,
+    title: 'Settings',
+    path: '/settings',
+    icon: <IoIcons.IoMdSettings />,
     cName: 'nav-text'
   },
   {
     title: 'Support',
     path: '/support',
     icon: <IoIcons.IoMdHelpCircle />,
+    cName: 'nav-text'
+  },
+  {
+    title: 'Log out',
+    path: '/logout',
+    icon: <IoIcons.IoIosLogOut />,
     cName: 'nav-text'
   }
 ];

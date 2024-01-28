@@ -14,12 +14,12 @@ const SelectProfile = () => {
 
     return (
         // <Link to={"profile"}>
-        <div className="sliding-select">
+        <div >
             <div  onClick={toggleOptions} className="display">
                         <UserProfile />Profile
             </div>
             <div className={`select-options ${optionsVisible ? 'visible' : ''}`}>
-                <Navbar/>
+                <Navbar toggleOptions={toggleOptions}/>
             </div>
         </div>
         // </Link>

@@ -19,8 +19,8 @@
   display: flex;
   justify-content: center;
   position: fixed;
-  top: 0;
-  left: -100%;
+  margin-top: -59px;
+  left: -300%;
   transition: 850ms;
 }
 

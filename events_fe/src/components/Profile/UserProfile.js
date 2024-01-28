@@ -6,13 +6,11 @@ import  "./UserProfile.css"
 const UserProfile = () => {
     return (
         <header className="header">
-                <div className="profile-photo-container">
                     <img
                         src={profilePicture}
                         alt="Profile"
                         className="profile-photo"
                     />
-                </div>
         </header>
     );
 };

@@ -1,37 +1,52 @@
 .header {
-  max-width: 60rem;
-  margin: auto;
-  padding: 2rem;
-  display: flex;
-  justify-content: space-between;
-  background-color: #223649;
+    /*margin-top: 55px;*/
+    padding: 1rem;
+    /*position: absolute;*/
+    display: flex;
+    justify-content: space-between;
+    background-color: #392249;
+}
 
+.profile-photo-container{
+}
+
+
+header a {
+    text-decoration: none;
 }
 
 .list {
-  position: absolute;
-  left: 1px;
-  display: flex;
-  gap: 1rem;
-
-
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
+.list li {
+    display: inline-block;
+    margin-right: 10px; /* Adjust the spacing between list items */
+}
+
+
 .list a {
-  text-decoration: none;
-  color: var(--color-primary-400);
+    color: var(--color-primary-400);
+    display: inline-block;
 }
 
 .list a:hover,
 .list a.active {
-  color: var(--color-primary-800);
+    color: var(--color-primary-800);
 }
 
-.profile{
-  position: absolute;
-  left: 1000px;
-  padding-top: 3px;
-  color: var(--color-primary-800);
+.NameAppSearch {
+    list-style: none;
+    padding-top: -50px;
+    margin: -15px;
 
+}
+
+.NameAppSearch li{
+    display: inline-block;
+    margin-right: 10px;
+    text-decoration: none; /* Remove underline */
 }
 

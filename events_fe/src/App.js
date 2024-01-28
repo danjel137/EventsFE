@@ -19,6 +19,8 @@ import NotificationPage from "./components/notification/NotificationPage";
 import SearchPage from "./components/search/SearchPage";
 import SelectProfile from "./components/Profile/SelectProfile";
 import ExplorePage from "./components/explore/ExplorePage";
+import GroupsPage from "./components/groups/GroupsPage";
+import FriendsPage from "./components/friends/FriendsPage";
 
 
 const router = createBrowserRouter([
@@ -30,6 +32,8 @@ const router = createBrowserRouter([
             {path: "home", element: <HomePage/>},
             {path: "search", element: <SearchPage/>},
             {path: "notification", element: <NotificationPage/>},
+            {path: "groups", element: <GroupsPage/>},
+            {path: "friends", element: <FriendsPage/>},
             {path: "explore", element: <ExplorePage/>},
             // {path: "profile", element: <SelectProfile/>},
             {

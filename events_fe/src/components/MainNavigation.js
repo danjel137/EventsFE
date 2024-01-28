@@ -20,67 +20,50 @@ function MainNavigation() {
     return (
         <header className={classes.header}>
 
-            <nav>
-
-                <ul className={classes.list}>
+                <div className={classes.NameAppSearch}>
                     {isLogin && <li>
-                        <NavLink to={"home"} className={`${classes.middleBar} ${({isActive}) =>
-                            isActive ? classes.active : undefined}`}
-                                 end
-                        ><h1><NameAppPage/></h1></NavLink>
+                        <NavLink to={"home"}
+                        ><NameAppPage/></NavLink>
                     </li>}
 
                     {isLogin && <li>
-                        <NavLink to={"search"} className={({isActive}) =>
-                            isActive ? classes.active : undefined}
-                                 end
+                        <NavLink to={"search"}
                         ><SearchBar/></NavLink>
-
                     </li>}
+                </div>
+                <ul className={classes.list}>
 
                     {isLogin && <li>
-                        <NavLink to={"home"} className={`${classes.middleBar} ${({isActive}) =>
-                            isActive ? classes.active : undefined}`}
+                        <NavLink to={"home"} className={({isActive}) =>
+                            isActive ? classes.active : undefined}
                                  end
                         ><LogoHome/></NavLink>
                     </li>}
                     {isLogin && <li>
-                        <NavLink to={"explore"} className={`${classes.middleBar} ${({isActive}) =>
-                            isActive ? classes.active : undefined}`}
+                        <NavLink to={"explore"} className={({isActive}) =>
+                            isActive ? classes.active : undefined}
                                  end
                         ><LogoExplore/></NavLink>
                     </li>}
                     {isLogin && <li>
-                        <NavLink to={"notification"} className={`${classes.middleBar} ${({isActive}) =>
-                            isActive ? classes.active : undefined}`}
+                        <NavLink to={"notification"} className={({isActive}) =>
+                            isActive ? classes.active : undefined}
                                  end
                         ><NotificationBar/></NavLink>
                     </li>}
 
-
+                </ul>
                     {!isLogin && <li>
                         <NavLink to={"auth"} className={({isActive}) =>
                             isActive ? classes.active : undefined}
                         >LogIn
                         </NavLink>
                     </li>}
-                    {isLogin &&
-                        <NavLink to={"notification"} className={`${classes.profile} ${({isActive}) =>
-                            isActive ? classes.active : undefined}`} >
-                            <SelectProfile/>
-                        </NavLink>
-                    }
-                </ul>
-
-
-            </nav>
-            {/*{isLogin &&*/}
-
-            {/*    <NavLink to={"photos"} className={classes.profile}>*/}
-            {/*        <UserProfile />Profile*/}
-            {/*    </NavLink>*/}
-
-            {/*        }*/}
+            <div >
+                {isLogin && (
+                        <SelectProfile />
+                )}
+            </div>
 
 
         </header>

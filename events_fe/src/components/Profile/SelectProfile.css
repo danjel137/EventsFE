@@ -3,7 +3,10 @@
 }
 
 .display {
+    margin-top:7px;
+    color: var(--color-primary-800);
     cursor: pointer;
+    display: flex;
 }
 
 .select-options {
@@ -16,16 +19,14 @@
     visibility: hidden;
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
     height: 100%; /* Cover the full height of the options */
+
  }
 .select-options.visible {
 
     opacity: 1;
     visibility: visible;
     transform: translateX(0);
+    background-color: red;
 }
 
 
-
-.display{
-    display: flex;
-}
