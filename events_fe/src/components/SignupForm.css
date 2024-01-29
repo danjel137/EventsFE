@@ -1,0 +1,63 @@
+/* SignupForm.css */
+.signup-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 665px;
+}
+
+.signup-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.signup-form input[type='text'],
+.signup-form input[type='email'],
+.signup-form input[type='password'],
+.signup-form select,
+.signup-form input[type='date'] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}
+
+.signup-form button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 50px;
+    /*margin-left: 15px;*/
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.signup-form button:hover {
+    background-color: #0056b3;
+}
+
+.nameAndSurname, .passwordAndConfirmPassword{
+    display: flex;
+    gap: 1rem;
+}
+.h1 {
+   margin-top : 2px;
+    color:#007bff
+}
+
+.buttons{
+    display :flex;
+    flex-direction:column;
+    align-items: center;margin-bottom: 2px
+}
+.btnSave{
+    text-align: center;
+}
+.buttons button:not(.btnSave) {
+    margin-top: 5px; /* Add margin at the top of the second button */
+}

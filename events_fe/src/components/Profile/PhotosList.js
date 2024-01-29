@@ -20,7 +20,6 @@ function PhotosList({ photos }) {
                         </li>
                     ))
                 ) : (
-                    // If events is not an array or has no data, render a message
                     <p>No photos available. Please add photos here.</p>
                 )}
             </ul>

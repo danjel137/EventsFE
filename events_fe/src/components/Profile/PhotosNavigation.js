@@ -30,12 +30,6 @@ function PhotosNavigation() {
                 Add Photo
               </NavLink>
             </li>
-              {isLogin &&
-                  <li>
-                      <Form action="/logout" method="post">
-                          <button>Logout</button>
-                      </Form>
-                  </li>}
           </ul>
         </nav>
       </header>

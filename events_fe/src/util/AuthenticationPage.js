@@ -2,10 +2,35 @@ import AuthForm from "../components/AuthForm";
 import error from "./Error";
 import axios from "axios";
 import {redirect} from "react-router-dom";
+import LogInForm from "../components/LogInForm";
+import SignupForm from "../components/SignupForm";
+import {useState} from "react";
 
 function AuthenticationPage() {
+    const [signUp, setSignUp] = useState(false)
+    const [logIn, setLogin] = useState(true)
+
+    function getDataToToggleInSignupForm(data) {
+        if(data){
+            setSignUp(!signUp)
+            setLogin(!logIn)
+        }
+        console.log(data,"---log in")
+    }
+
+    function getDataToToggleInLoginForm(data) {
+        if(data){
+            setSignUp(!signUp)
+            setLogin(!logIn)
+        }
+        console.log(data,"---signup")
+
+    }
     return (
-        <AuthForm/>
+        <>
+            {logIn && !signUp && <LogInForm onSubmit={getDataToToggleInSignupForm}/>}
+            {!logIn && signUp && <SignupForm onClick={getDataToToggleInLoginForm}/>}
+        </>
     )
 }
 
@@ -13,6 +38,7 @@ function AuthenticationPage() {
 export default AuthenticationPage
 
 export async function authAction({request}) {
+
     const data = await request.formData()
     const searchParams = new URL(request.url).searchParams
     const mode = searchParams.get("mode") || "singUp"

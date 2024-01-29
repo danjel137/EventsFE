@@ -21,6 +21,8 @@ import SelectProfile from "./components/Profile/SelectProfile";
 import ExplorePage from "./components/explore/ExplorePage";
 import GroupsPage from "./components/groups/GroupsPage";
 import FriendsPage from "./components/friends/FriendsPage";
+import SignupForm from "./components/SignupForm";
+import LogInForm from "./components/LogInForm";
 
 
 const router = createBrowserRouter([
@@ -58,8 +60,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'logout',
-                // element: <MainNavigation/>,
-                action: actionLogOut,
+                loader: actionLogOut,
             },
         ]
     }
