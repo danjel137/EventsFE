@@ -85,6 +85,7 @@
 
 
 .container {
+    border: 2px solid #b56bd7;
     max-width: 1250px;
     margin: 20px auto;
     padding: 0 !important;

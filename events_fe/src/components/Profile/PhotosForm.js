@@ -13,7 +13,6 @@ function PhotosForm({method, photos}) {
     const [base64Image, setBase64Image] = useState('');
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [isSubmitted,setIsSubmitted]=useState(false)
     const isSubmitting = navigation.state === 'submitting';
 
     const handleImageChange = (e) => {
@@ -42,9 +41,10 @@ function PhotosForm({method, photos}) {
     }
 
 
-    function cancelHandler() {
+    function redirectPage() {
         navigate('..');
     }
+
 
     async function handleFormSubmit(e) {
         e.preventDefault()
@@ -69,7 +69,7 @@ function PhotosForm({method, photos}) {
             });
 
             console.log('Response from server:---------------------', obj,"---------------------");
-            setIsSubmitted(true)
+
         } catch (error) {
             console.error('Error:', error)
         }
@@ -77,7 +77,8 @@ function PhotosForm({method, photos}) {
 
     return (
         <Fragment>
-        {!isSubmitted && <Form method="post" onSubmit={handleFormSubmit} className={classes.form}>
+
+            <Form method="post" onSubmit={handleFormSubmit} className={classes.form}>
             <p>
                 <label htmlFor="title">Title</label>
                 <input
@@ -110,22 +111,14 @@ function PhotosForm({method, photos}) {
                 />
             </p>
             <div className={classes.actions}>
-                <button type="button" onClick={cancelHandler} disabled={isSubmitting}>
+                <button type="button" onClick={redirectPage} disabled={isSubmitting}>
                     Cancel
                 </button>
-                <button disabled={isSubmitting}>
+                <button disabled={isSubmitting} onClick={redirectPage}>
                     {isSubmitting ? 'Submitting...' : 'Save'}
                 </button>
             </div>
-        </Form>}
-            <>
-                {isSubmitted && (
-                    <>
-                        <p>Submitted successfully</p>
-                        <Link to="..">Click to view all photos</Link>
-                    </>
-                )}
-            </>
+        </Form>
 
         </Fragment>
 
