@@ -1,12 +1,15 @@
-import AuthForm from "../components/AuthForm";
+
 import error from "./Error";
 import axios from "axios";
 import {redirect} from "react-router-dom";
 import LogInForm from "../components/LogInForm";
 import SignupForm from "../components/SignupForm";
 import {useState} from "react";
+import "./Authentication.css"
+import {getAuthToken} from "./util";
 
 function AuthenticationPage() {
+
     const [signUp, setSignUp] = useState(false)
     const [logIn, setLogin] = useState(true)
 
@@ -15,7 +18,6 @@ function AuthenticationPage() {
             setSignUp(!signUp)
             setLogin(!logIn)
         }
-        console.log(data,"---log in")
     }
 
     function getDataToToggleInLoginForm(data) {
@@ -23,14 +25,14 @@ function AuthenticationPage() {
             setSignUp(!signUp)
             setLogin(!logIn)
         }
-        console.log(data,"---signup")
 
     }
     return (
-        <>
+        <div className={"authentication"}>
             {logIn && !signUp && <LogInForm onSubmit={getDataToToggleInSignupForm}/>}
             {!logIn && signUp && <SignupForm onClick={getDataToToggleInLoginForm}/>}
-        </>
+
+        </div>
     )
 }
 
@@ -41,15 +43,37 @@ export async function authAction({request}) {
 
     const data = await request.formData()
     const searchParams = new URL(request.url).searchParams
-    const mode = searchParams.get("mode") || "singUp"
-    if (mode !== "login" && mode !== "singUp") {
+    const mode = searchParams.get("mode") || "login"
+    console.log("here is mode",mode)
+    // if (mode !== "login" && mode !== "singUp") {
+    //     throw error()
+    // }
+    // const authData = {
+    //     username: data.get("username"),
+    //     password: data.get("password"),
+    // }
+    let authData={};
+    if(mode==="login"){
+         authData = {
+            username: data.get("username"),
+            password: data.get("password"),
+        }
+    }else if(mode==="singUp"){
+        authData = {
+            first_name: data.get("firstName"),
+            last_name: data.get("lastName"),
+            email: data.get("email"),
+            password: data.get("password"),
+            password_confirmation: data.get("confirmPassword"),
+            account:{
+                gender: data.get("gender"),
+                birthday: data.get("birthday"),
+            }
+        }
+    }else{
         throw error()
     }
-    const authData = {
-        username: data.get("username"),
-        password: data.get("password"),
-    }
-
+    console.log(authData)
 
     try {
         const response = await axios.post('http://127.0.0.1:8000/'+ mode+"/", authData);
@@ -76,8 +100,6 @@ export async function authAction({request}) {
             });
         }
     }
-
-
 
 
 }

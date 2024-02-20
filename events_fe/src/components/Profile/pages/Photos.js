@@ -27,6 +27,7 @@ export async function loaderrr() {
             }
         });
 
+
         return response.data;
     } catch (error) {
         throw new Response(JSON.stringify({message: 'Pati nje problem ne marrjen e fotove.'}), {

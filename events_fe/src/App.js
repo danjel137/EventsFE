@@ -1,4 +1,4 @@
-import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import {createBrowserRouter, Route, RouterProvider} from "react-router-dom";
 import HomePage from "./components/Home/Home";
 import PhotosPage, {loaderrr} from "./components/Profile/pages/Photos";
 import PhotosDetailPage, {deletePhotosAction, loaderForPhotosDetail} from "./components/Profile/pages/PhotosDetails";
@@ -14,7 +14,7 @@ import ErrorPage from "./util/Error";
 import AuthenticationPage, {authAction} from "./util/AuthenticationPage";
 import {actionLogOut} from "./util/logout";
 import MainNavigation from "./components/MainNavigation";
-import AuthForm from "./components/AuthForm";
+
 import NotificationPage from "./components/notification/NotificationPage";
 import SearchPage from "./components/search/SearchPage";
 import SelectProfile from "./components/Profile/SelectProfile";
@@ -23,6 +23,10 @@ import GroupsPage from "./components/groups/GroupsPage";
 import FriendsPage from "./components/friends/FriendsPage";
 import SignupForm from "./components/SignupForm";
 import LogInForm from "./components/LogInForm";
+import DataAdminContext from "./store/DataAdminContext";
+import {useContext} from "react";
+import DataAdminProvider from "./store/DataAdminProvider";
+import ProfilePicture from "./components/Profile/header/ProfilePicture";
 
 
 const router = createBrowserRouter([
@@ -50,6 +54,7 @@ const router = createBrowserRouter([
                         ]
                     },
                     {path: 'new', element: <NewPhotosPage/>},
+                    {path: 'ProfilePicture', element: <ProfilePicture/>},
                 ]
             },
             {
@@ -67,9 +72,17 @@ const router = createBrowserRouter([
 ])
 
 function App() {
-    return <RouterProvider router={router}/>;
-    // return <YourComponent/>
-    // return <PhotoList/>
+    const { username, first_name, last_name } = useContext(DataAdminContext);
+
+    return (
+        <DataAdminProvider username={username} first_name={first_name} last_name={last_name}>
+            <RouterProvider router={router}>
+                {/*<RootLayout/>*/}
+            </RouterProvider>
+        </DataAdminProvider>
+    );
+    // return <RouterProvider router={router}/>;
+
 }
 
 export default App

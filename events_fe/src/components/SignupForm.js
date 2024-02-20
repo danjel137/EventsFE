@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import "./SignupForm.css"
+import {Form, Link, useNavigation, useSearchParams} from "react-router-dom";
 
 // SignupForm.js
 
 
 const SignupForm = (props) => {
+    // const [searchParams] = useSearchParams()
+    // const isLogin = searchParams.get("mode") === "singUp"
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [username, setUsername] = useState('');
@@ -23,34 +26,21 @@ const SignupForm = (props) => {
     const handleGenderChange = (e) => setGender(e.target.value);
     const handleBirthdayChange = (e) => setBirthday(e.target.value);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-
-        // Reset the form fields
-        setFirstName('');
-        setLastName('');
-        setUsername('');
-        setEmail('');
-        setPassword('');
-        setConfirmPassword('');
-        setGender('');
-        setBirthday('');
-    };
 
     const [goToLogInForm, setGoToLogInForm] = useState(false)
     const toggleBackToLogIn = () => {
         setGoToLogInForm(backToLogIn=>!backToLogIn)
     }
     props.onClick(goToLogInForm)
+    const navigation = useNavigation()
+    const isSubmitting = navigation.state === "submitting"
 
     return (
 
-        <form className="signup-form" onSubmit={handleSubmit}>
-            <div className="signup-form-container">
+        <Form method={"post"} className="signup-form" >
 
-            <h1 className={"h1"} >Sign Up</h1>
-            <p>It’s quick and easy.</p>
+            <h1  >Sign Up</h1>
+            <p >It’s quick and easy.</p>
             <div className={"nameAndSurname"}>
             <div>
                 <label htmlFor="firstName">First Name:</label>
@@ -74,17 +64,6 @@ const SignupForm = (props) => {
                     required
                 />
             </div>
-            </div>
-            <div>
-                <label htmlFor="username">Username:</label>
-                <input
-                    type="text"
-                    id="username"
-                    name="username"
-                    value={username}
-                    onChange={handleUsernameChange}
-                    required
-                />
             </div>
             <div>
                 <label htmlFor="email">Email:</label>
@@ -146,17 +125,16 @@ const SignupForm = (props) => {
                 />
             </div>
 
-            </div>
             <div className={"buttons"}>
-            <button className={"btnSave"} ype="submit">
-                Save
+            <button className={"button-75"} disabled={isSubmitting}>
+                {isSubmitting ? "Submitting..." : "save"}
             </button>
 
-            <button onClick={toggleBackToLogIn}>
-               Back to LogIn
-            </button>
+                <Link to={`?mode=login`} className={"link-button"} onClick={toggleBackToLogIn}>
+                    Back to LogIn
+                </Link>
             </div>
-        </form>
+        </Form>
 
 
     );
