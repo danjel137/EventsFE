@@ -27,6 +27,8 @@ import DataAdminContext from "./store/DataAdminContext";
 import {useContext} from "react";
 import DataAdminProvider from "./store/DataAdminProvider";
 import ProfilePicture from "./components/Profile/header/ProfilePicture";
+import PortalExample from "./components/Profile/AddPhoto";
+import PhotosNavigation from "./components/Profile/PhotosNavigation";
 
 
 const router = createBrowserRouter([
@@ -53,7 +55,7 @@ const router = createBrowserRouter([
                             {path: 'edit', element: <EditPhotosPage/>},
                         ]
                     },
-                    {path: 'new', element: <NewPhotosPage/>},
+                    // {path: 'new', element: <NewPhotosPage/>},
                     {path: 'ProfilePicture', element: <ProfilePicture/>},
                 ]
             },
@@ -78,10 +80,11 @@ function App() {
         <DataAdminProvider username={username} first_name={first_name} last_name={last_name}>
             <RouterProvider router={router}>
                 {/*<RootLayout/>*/}
+                {/*<PortalExample />*/}
             </RouterProvider>
         </DataAdminProvider>
+        // <PhotosNavigation/>
     );
-    // return <RouterProvider router={router}/>;
 
 }
 

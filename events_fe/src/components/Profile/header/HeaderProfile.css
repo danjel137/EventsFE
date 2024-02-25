@@ -193,17 +193,30 @@
 /*.social i:nth-child(2)  { color: #1da1f2; }*/
 /*.social i:nth-child(3)  { color: #bd081c; }*/
 /*.social i:nth-child(4)  { color: #36465d; }*/
+.addAndEditButton {
+    display: inline-flex;
+    gap: 25px;
+    margin-left:300px;
+    margin-bottom:10px;
+}
 
+/*.addAndEditButton li{*/
+/*   padding:20px 20px;*/
+/*}*/
 .right {
     padding: 0 25px 0 25px !important;
 }
 
 .nav {
     display: inline-flex;
+    margin-bottom:-10px;
+
 }
 
 .nav li {
-    margin: 40px 30px 0 10px;
+    /*margin: 30px 30px 0 10px;*/
+    margin-left: 25px;
+    margin-bottom: 5px;
     cursor: pointer;
     font-size: 13pt;
     text-transform: uppercase;

@@ -41,84 +41,80 @@ function PhotosForm({method, photos}) {
     }
 
 
-    function redirectPage() {
-        navigate('..');
-    }
-
-
-    async function handleFormSubmit(e) {
-        e.preventDefault()
-        const authToken=getAuthToken()
+    function handleFormSubmit(e) {
+        // e.preventDefault()
+        const authToken = getAuthToken()
         // const decodedToken = jwt_decode(authToken);
         // console.log('Decoded token:', decodedToken);
         //
         //
         // const userId = decodedToken.userId; // Replace 'userId' with the actual field in your token payload
         // console.log('User IDddddddddddddddddd:', userId);
-        const obj={
+        const obj = {
             title,
             description,
-            image_base64:base64Image
+            image_base64: base64Image
         }
         try {
-            const response = await axios.post('http://127.0.0.1:8000/addPhoto/', obj,{
-                headers:{
+            const response = axios.post('http://127.0.0.1:8000/addPhoto/', obj, {
+                headers: {
                     'Authorization': `Token ${authToken}`,
                     // 'Content-Type': 'application/json', // Content-Type header
                 }
             });
+            window.location.href = 'http://localhost:3000/photos';
 
-            console.log('Response from server:---------------------', obj,"---------------------");
+
+            console.log('Response from server:---------------------', obj, "---------------------");
 
         } catch (error) {
             console.error('Error:', error)
         }
     }
 
+
     return (
         <Fragment>
 
-            <Form method="post" onSubmit={handleFormSubmit} className={classes.form}>
-            <p>
-                <label htmlFor="title">Title</label>
+            <div className={classes.form}>
+                <p>
+                    <label htmlFor="title">Title</label>
+                    <input
+                        id="title"
+                        type="text"
+                        name="title"
+                        required
+                        onChange={handleTitleChange}
+                        // defaultValue={event ? event.description : ""}
+                    />
+                </p>
                 <input
-                    id="title"
-                    type="text"
-                    name="title"
+                    id="image"
+                    type="file"
+                    accept="image/*"
+                    name="image"
+                    onChange={handleImageChange}
                     required
-                    onChange={handleTitleChange}
                     // defaultValue={event ? event.description : ""}
                 />
-            </p>
-            <input
-                id="image"
-                type="file"
-                accept="image/*"
-                name="image"
-                onChange={handleImageChange}
-                required
-                // defaultValue={event ? event.description : ""}
-            />
-            <p>
-                <label htmlFor="description">Description</label>
-                <textarea
-                    id="description"
-                    name="description"
-                    rows="5"
-                    required
-                    onChange={handleDescriptionChange}
-                    // defaultValue={event ? event.description : ""}
-                />
-            </p>
-            <div className={classes.actions}>
-                <button type="button" onClick={redirectPage} disabled={isSubmitting}>
-                    Cancel
-                </button>
-                <button disabled={isSubmitting} onClick={redirectPage}>
-                    {isSubmitting ? 'Submitting...' : 'Save'}
-                </button>
+                <p>
+                    <label htmlFor="description">Description</label>
+                    <textarea
+                        id="description"
+                        name="description"
+                        rows="5"
+                        required
+                        onChange={handleDescriptionChange}
+                        // defaultValue={event ? event.description : ""}
+                    />
+                </p>
+                <div className={classes.actions}>
+
+                    <button disabled={isSubmitting} onClick={handleFormSubmit}>
+                        {isSubmitting ? 'Submitting...' : 'Save'}
+                    </button>
+                </div>
             </div>
-        </Form>
 
         </Fragment>
 
